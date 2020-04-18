@@ -51,7 +51,7 @@ function setVideoProgress() {
 // Stop video - since no html5 stop function, we have to set time back to 0 and pause it
 function stopVideo() {
   video.currentTime = 0;
-  video.pause;
+  video.pause();
 }
 
 // Event listeners
