@@ -22,19 +22,36 @@ function updatePlayIcon() {
   }
 }
 
-// Update progress & timestamp
+// Update progress & timestamp. html5 api has currentTime and duration to use
 function updateProgress() {
-  return true;
+  // this allows range to move with percentage of video
+  progress.value = (video.currentTime / video.duration) * 100;
+
+
+  // Get minutes
+  let mins = Math.floor(video.currentTime / 60);
+  if(mins < 10) {
+    mins = '0' + String(mins);
+  }
+
+  // Get seconds
+  let secs = Math.floor(video.currentTime % 60);
+  if(secs < 10) {
+    secs = '0' + String(secs);
+  }
+
+  timestamp.innerHTML = `${mins}:${secs}`;
 }
 
 // Set video time to progress
 function setVideoProgress() {
-  return true;
+  video.currentTime = (+progress.value * video.duration) / 100; // plus sign to make sure its int
 }
 
-// Stop video
+// Stop video - since no html5 stop function, we have to set time back to 0 and pause it
 function stopVideo() {
-  return true;
+  video.currentTime = 0;
+  video.pause;
 }
 
 // Event listeners
