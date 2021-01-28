@@ -1,2 +1,2 @@
-# Custom-Video-Player
+# Custom Video Player
 Custom video player for HTML 5
